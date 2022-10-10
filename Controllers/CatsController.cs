@@ -19,8 +19,8 @@
         //    return View(cats);
         //}
 
-        //Using Bounding
-        public IEnumerable<CatViewModel> All(string name = null)
+        //Using Binding
+        public IActionResult All(string name = null)
         {
             var cats = new List<CatViewModel>
             {
@@ -35,8 +35,27 @@
                     .ToList();
             }
 
-            return cats;
+            return View(cats);
         }
+
+        //Using Binding
+        //public IEnumerable<CatViewModel> All(string name = null)
+        //{
+        //    var cats = new List<CatViewModel>
+        //    {
+        //        new CatViewModel{Name="Sharo",Age=3 },
+        //        new CatViewModel{Name="Lady",Age=14 }
+        //    };
+
+        //    if (name != null)
+        //    {
+        //        cats = cats
+        //            .Where(c => c.Name.ToLower().Contains(name))
+        //            .ToList();
+        //    }
+
+        //    return cats;
+        //}
 
         // Using to red\turn data
 
