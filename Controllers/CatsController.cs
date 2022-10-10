@@ -8,16 +8,30 @@
 
     public class CatsController : Controller
     {
-        ////Using Views
-        //public IActionResult All()
-        //{
-        //    var cats = new List<CatViewModel>
-        //    {
-        //        new CatViewModel{Name="Sharo",Age=3 },
-        //        new CatViewModel{Name="Lady",Age=13 }
-        //    };
-        //    return View(cats);
-        //}
+        public IActionResult TestTwo(int id)
+        {
+            return Ok(id);
+        }
+        public IActionResult TestOne()
+        {
+            return NotFound();
+        }
+
+        // new example
+        public IActionResult Create() => View();
+
+        [HttpPost]
+        public IActionResult Create(CatFormModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            return Ok();
+        }
+
+
 
         //Using Binding
         public IActionResult All(string name = null)
@@ -37,6 +51,19 @@
 
             return View(cats);
         }
+
+        ////Using Views
+        //public IActionResult All()
+        //{
+        //    var cats = new List<CatViewModel>
+        //    {
+        //        new CatViewModel{Name="Sharo",Age=3 },
+        //        new CatViewModel{Name="Lady",Age=13 }
+        //    };
+        //    return View(cats);
+        //}
+
+
 
         //Using Binding
         //public IEnumerable<CatViewModel> All(string name = null)
