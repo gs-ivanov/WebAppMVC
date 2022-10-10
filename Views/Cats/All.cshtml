@@ -1,0 +1,13 @@
+﻿@model List<CatViewModel>
+
+<h1>Hello from the All Cats!</h1>
+
+<ul>
+    @foreach (var cat in Model)
+    {
+        <li>
+             @cat.Name - @cat.Age
+        </li>
+    }
+</ul>
+
