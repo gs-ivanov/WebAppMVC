@@ -4,10 +4,36 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Linq;
+    using WebAppMVC.Data;
     using WebAppMVC.Models;
 
     public class CatsController : Controller
     {
+
+        private readonly DbContext data;
+
+        public CatsController()
+            => this.data = new DbContext();
+
+        public IActionResult List()
+        {
+            var cats = this.data
+                .AllCats()
+                .Select(c => new CatModel
+                {
+                    Name = c.Name,
+                    Age = c.Age,
+                    Owner = c.Owner.Name
+                })
+                .ToList();
+
+            if (!cats.Any())
+            {
+                return NotFound();
+            }
+
+            return View(cats);
+        }
         public IActionResult TestTwo(int id)
         {
             return Ok(id);

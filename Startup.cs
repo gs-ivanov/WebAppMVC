@@ -50,10 +50,10 @@ namespace WebAppMVC
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    // Setting new pattern from:
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                // Setting new pattern from:
+                //pattern: "{controller=Home}/{action=Index}/{id?}");
                 //To:
-                //pattern: "{controller=Cats}/{action=All}/{id?}");
+                pattern: "{controller=Cats}/{action=List}/{id?}");
             });
         }
     }
